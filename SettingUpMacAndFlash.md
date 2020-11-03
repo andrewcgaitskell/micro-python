@@ -55,3 +55,6 @@ https://docs.micropython.org/en/latest/esp8266/tutorial/index.html#esp8266-tutor
 picocom /dev/cu.SLAB_USBtoUART -b115200
 
 screen /dev/cu.SLAB_USBtoUART* 115200
+
+https://learn.adafruit.com/micropython-basics-esp8266-webrepl/access-webrepl
+
