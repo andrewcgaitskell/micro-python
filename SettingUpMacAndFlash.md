@@ -48,3 +48,10 @@ Hash of data verified.
 Leaving...
 Hard resetting via RTS pin...
 andrewgaitskell@Andrews-MacBook-Air MicroPython 
+
+
+https://docs.micropython.org/en/latest/esp8266/tutorial/index.html#esp8266-tutorial
+
+picocom /dev/cu.SLAB_USBtoUART -b115200
+
+screen /dev/cu.SLAB_USBtoUART* 115200
