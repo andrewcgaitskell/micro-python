@@ -58,3 +58,11 @@ screen /dev/cu.SLAB_USBtoUART* 115200
 
 https://learn.adafruit.com/micropython-basics-esp8266-webrepl/access-webrepl
 
+import network
+wlan = network.WLAN(network.STA_IF)
+wlan.active(True)
+wlan.connect('ssid', 'password')
+
+ws://192.168.4.1:8266/
+
+ws://192.168.1.36:8266/
