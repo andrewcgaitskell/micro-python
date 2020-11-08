@@ -34,4 +34,4 @@ jupyter notebook
 
 you should then find the micropython kernel available and you can start with esp8266 notebook
 
-https://github.com/andrewcgaitskell/micro-python/blob/main/MQTTESP8266.ipynb
+https://github.com/andrewcgaitskell/micro-python/blob/main/3_MQTTESP8266.ipynb
