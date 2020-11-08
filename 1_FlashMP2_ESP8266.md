@@ -1,4 +1,4 @@
-Plug in ESP8266
+# Plug in ESP8266
 
 # Find out which Serial Port it is connected to
 
@@ -12,6 +12,8 @@ I was using a 4 port hub and did not realise they gave different numbers to the 
 /dev/tty.usbserial-14130
 
 # Erase Flash
+
+thought - install esptool in Virtual Environment
 
 python /Users/andrewgaitskell/Library/Python/2.7/lib/python/site-packages/esptool.py --port /dev/tty.usbserial-14130 erase_flash
 
@@ -64,7 +66,35 @@ screen /dev/tty.usbserial-14110 115200
 
 import webrepl_setup
 
+also upload the following as a boot.py file
+
+    # This file is executed on every boot (including wake-boot from deepsleep)
+    #import esp
+    #esp.osdebug(None)
+    import uos, machine
+    #uos.dupterm(None, 1) # disable REPL on UART(0)
+    import gc
+    import webrepl
+    webrepl.start()
+    gc.collect()
+
+
+    def do_connect():
+        import network
+        wlan = network.WLAN(network.STA_IF)
+        wlan.active(True)
+        if not wlan.isconnected():
+            print('connecting to network...')
+            wlan.connect('ssid', 'password')
+            while not wlan.isconnected():
+                pass
+        print('network config:', wlan.ifconfig())
+    do_connect()
+
+
 # Installed Jupyter into Virtualenv 
+
+Follow link:
 
 https://github.com/andrewcgaitskell/micro-python/blob/main/2_CreateEnv%2BInstallKernel.md
 
