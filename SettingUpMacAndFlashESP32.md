@@ -1,31 +1,41 @@
+# Burning Micro Python to ESP32
+
 https://docs.micropython.org/en/latest/esp32/tutorial/intro.html
 
+Serial Port on Mac : /dev/tty.SLAB_USBtoUART
 
-/dev/tty.SLAB_USBtoUART
-
+Following is what was was suggested, but did not work on my mac
 
 esptool.py --port /dev/ttyUSB0 erase_flash
 
 esptool.py --port /dev/tty.SLAB_USBtoUART erase_flash
 
+To find where esptool was installed, use following command: 
+
 pip show -f esptool
 
-
-/Users/andrewgaitskell/Library/Python/2.7/lib/python/site-packages/esptool.py --port /dev/tty.SLAB_USBtoUART erase_flash
 
 following worked :
 
 python /Users/andrewgaitskell/Library/Python/2.7/lib/python/site-packages/esptool.py --port /dev/tty.SLAB_USBtoUART erase_flash
 
+## Started with ESP32
+
+Recommended :
 
 esptool.py --chip esp32 --port /dev/ttyUSB0 write_flash -z 0x1000 esp32-20180511-v1.9.4.bin
 
+Actual :
 
 python /Users/andrewgaitskell/Library/Python/2.7/lib/python/site-packages/esptool.py --chip esp32 -port /dev/tty.SLAB_USBtoUART write_flash -z 0x1000 esp32-20180511-v1.9.4.bin
+
+# Download and Flash to ESP32
 
 https://micropython.org/download/esp32/
 
 python /Users/andrewgaitskell/Library/Python/2.7/lib/python/site-packages/esptool.py --chip esp32 write_flash -z 0x1000 esp32-idf4-20200902-v1.13.bin                          
+Output:
+
 esptool.py v2.8
 Found 3 serial ports
 Serial port /dev/cu.usbserial-0001
