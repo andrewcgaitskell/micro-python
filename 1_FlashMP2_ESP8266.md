@@ -66,7 +66,7 @@ import webrepl_setup
 
 # Installed Jupyter into Virtualenv 
 
-https://github.com/andrewcgaitskell/micro-python/blob/main/CreateEnv+InstallKernel.md
+https://github.com/andrewcgaitskell/micro-python/blob/main/2_CreateEnv%2BInstallKernel.md
 
 source /Users/andrewgaitskell/Code/PythonEnvs/env20201104/bin/activate
 
