@@ -25,13 +25,15 @@ Recommended :
 
 esptool.py --chip esp32 --port /dev/ttyUSB0 write_flash -z 0x1000 esp32-20180511-v1.9.4.bin
 
-Actual :
+Recommended :
 
 python /Users/andrewgaitskell/Library/Python/2.7/lib/python/site-packages/esptool.py --chip esp32 -port /dev/tty.SLAB_USBtoUART write_flash -z 0x1000 esp32-20180511-v1.9.4.bin
 
 # Download and Flash to ESP32
 
 https://micropython.org/download/esp32/
+
+Actual:
 
 python /Users/andrewgaitskell/Library/Python/2.7/lib/python/site-packages/esptool.py --chip esp32 write_flash -z 0x1000 esp32-idf4-20200902-v1.13.bin                          
 Output:
@@ -62,17 +64,25 @@ andrewgaitskell@Andrews-MacBook-Air MicroPython
 
 https://docs.micropython.org/en/latest/esp8266/tutorial/index.html#esp8266-tutorial
 
-picocom /dev/cu.SLAB_USBtoUART -b115200
+# Connect to ESP32 for REPL
 
 screen /dev/cu.SLAB_USBtoUART* 115200
 
+# Enable WEBREPL do the following
+
 https://learn.adafruit.com/micropython-basics-esp8266-webrepl/access-webrepl
+
+Connect ESP8266 to WiFi
 
 import network
 wlan = network.WLAN(network.STA_IF)
 wlan.active(True)
 wlan.connect('ssid', 'password')
 
+Used when accessing via WEBREPL
+
 ws://192.168.4.1:8266/
+
+Found the following IP from my Router
 
 ws://192.168.1.36:8266/
