@@ -1,8 +1,18 @@
-install virtualenv
+# Mac seems to have Python27 as default Python
+
+# Check what version by python --version
+
+# You may need to replace python with python38
+
+# install virtualenv
 
 pip install virtualenv
 
+# make virtual environment
+
 python -m venv env20201104
+
+# activate it
 
 /Users/andrewgaitskell/Code/PythonEnvs/env20201104/bin/activate
 
