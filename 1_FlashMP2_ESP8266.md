@@ -64,7 +64,9 @@ screen /dev/tty.usbserial-14110 115200
 
 ## To make available via WiFi
 
-import webrepl_setup
+at REPL prompt - type:
+
+    import webrepl_setup
 
 also upload the following as a boot.py file
 
@@ -94,13 +96,13 @@ also upload the following as a boot.py file
 
 # Installed Jupyter into Virtualenv 
 
-Follow link:
+Follow link to next stage:
 
 https://github.com/andrewcgaitskell/micro-python/blob/main/2_CreateEnv%2BInstallKernel.md
 
 source /Users/andrewgaitskell/Code/PythonEnvs/env20201104/bin/activate
 
-# Keep Track of IP Addresses
+# Important to Keep Track of IP Addresses
 
 192.168.1.37
 
