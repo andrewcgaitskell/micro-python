@@ -25,10 +25,6 @@ Recommended :
 
 esptool.py --chip esp32 --port /dev/ttyUSB0 write_flash -z 0x1000 esp32-20180511-v1.9.4.bin
 
-Recommended :
-
-python /Users/andrewgaitskell/Library/Python/2.7/lib/python/site-packages/esptool.py --chip esp32 -port /dev/tty.SLAB_USBtoUART write_flash -z 0x1000 esp32-20180511-v1.9.4.bin
-
 # Download and Flash to ESP32
 
 https://micropython.org/download/esp32/
