@@ -20,4 +20,12 @@ Follow install instructions in following link:
 
 https://pypi.org/project/jupyter-micropython-remote/
 
+pip install jupyter
 
+pip install jupyter_micropython_remote
+
+# open up jupyter
+
+jupyter notebook
+
+you should then find the micropython kernel available and you can start with esp8266 notebook
