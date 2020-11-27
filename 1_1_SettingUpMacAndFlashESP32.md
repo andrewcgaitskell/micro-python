@@ -27,7 +27,7 @@ Normal ESP32 - Serial Port on Mac : /dev/tty.SLAB_USBtoUART
 
 ## Install esptool
 
-Create a Python Virtual Environment
+See first step if you do not have a Virtual Environment.
 
 I have an existing Virtual Environment, to activate it: 
 
@@ -146,6 +146,9 @@ Open up WebRepl webpage and enter the IP address of the ESPCam
 
 Enter password
 
-Should be offered:
+Should be offered Micro Python prompt:
 
->>>
+        >>>
+        
+        
+        
