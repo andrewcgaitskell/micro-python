@@ -14,7 +14,7 @@ I was using a 4 port hub and did not realise they gave different numbers to the 
 
 # Erase Flash
 
-create Python Virtual Environment
+You should have created Python Virtual Environment.
 
 Activate it
 
@@ -81,14 +81,6 @@ upload the following as a boot.py file
     do_connect()
 
 Reboot device.
-
-# Install Jupyter into Virtualenv 
-
-Follow link to next stage:
-
-https://github.com/andrewcgaitskell/micro-python/blob/main/2_CreateEnv%2BInstallKernel.md
-
-source /Users/andrewgaitskell/Code/PythonEnvs/env20201104/bin/activate
 
 # Important to Keep Track of IP Addresses
 
