@@ -76,6 +76,13 @@ screen /dev/tty.usbserial-A50285BI 115200
 
 https://learn.adafruit.com/micropython-basics-esp8266-webrepl/access-webrepl
 
+at >>> paste
+
+import webrepl_setup
+
+
+
+
 Connect ESP8266 to WiFi
 
 import network
