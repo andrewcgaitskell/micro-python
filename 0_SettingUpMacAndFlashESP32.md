@@ -1,3 +1,13 @@
+# Overview
+
+1. Find USB Port
+2. Erase Flash Memory
+3. Download Relevant Micropython
+4. Burn to Flash
+5. Connect to ESP32 Using Serial
+6. Setup WiFi Connection
+7. Connect to ESP32 Using WiFi
+
 # Burning Micro Python to ESP32
 
 ## List USB Devices connected to Mac
