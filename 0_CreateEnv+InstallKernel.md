@@ -16,7 +16,9 @@ python -m venv env20201104
 
 ## activate it
 
-/Users/andrewgaitskell/Code/PythonEnvs/env20201104/bin/activate
+source /Users/andrewgaitskell/Code/PythonEnvs/env20201104/bin/activate
+
+## install micropython kernel
 
 Follow install instructions in following link:
 
