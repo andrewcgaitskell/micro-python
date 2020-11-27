@@ -1,68 +1,64 @@
 # Burning Micro Python to ESP32
 
+## List USB Devices connected to Mac
+
+ls /dev/tty*
+
+### Specific to ESP32CAM
+
+/dev/tty.usbserial-A50285BI
+
+## Reference
+
 https://docs.micropython.org/en/latest/esp32/tutorial/intro.html
 
-Serial Port on Mac : /dev/tty.SLAB_USBtoUART
+Normal ESP32 - Serial Port on Mac : /dev/tty.SLAB_USBtoUART
 
-Following is what was was suggested, but did not work on my mac
+## Install esptool
 
-esptool.py --port /dev/ttyUSB0 erase_flash
+I have a Virtual Environment, to activate it: 
 
-esptool.py --port /dev/tty.SLAB_USBtoUART erase_flash
+source /Users/andrewgaitskell/Code/PythonEnvs/env20201104/bin/activate
 
-To find where esptool was installed, use following command: 
+pip install esptool
 
-pip show -f esptool
+## Erase Flash
 
+esptool.py --port /dev/tty.usbserial-A50285BI erase_flash
 
-following worked :
-
-python /Users/andrewgaitskell/Library/Python/2.7/lib/python/site-packages/esptool.py --port /dev/tty.SLAB_USBtoUART erase_flash
-
-## Started with ESP32
-
-Recommended :
-
-esptool.py --chip esp32 --port /dev/ttyUSB0 write_flash -z 0x1000 esp32-20180511-v1.9.4.bin
-
-# Download and Flash to ESP32
+## Write Flash
 
 https://micropython.org/download/esp32/
 
-Actual:
+cp /Users/andrewgaitskell/Downloads/esp32-idf3-20200902-v1.13.bin /Users/andrewgaitskell/Documents/MicroPython/esp32cam
 
-python /Users/andrewgaitskell/Library/Python/2.7/lib/python/site-packages/esptool.py --chip esp32 write_flash -z 0x1000 esp32-idf4-20200902-v1.13.bin                          
+cd /Users/andrewgaitskell/Documents/MicroPython/esp32cam
+
+esptool.py --chip esp32 --port /dev/tty.usbserial-A50285BI write_flash -z 0x1000 esp32-idf3-20200902-v1.13.bin
+
+__needed to press reset button for it to start__
+
 Output:
 
-esptool.py v2.8
-Found 3 serial ports
-Serial port /dev/cu.usbserial-0001
-/dev/cu.usbserial-0001 failed to connect: [Errno 16] could not open port /dev/cu.usbserial-0001: [Errno 16] Resource busy: '/dev/cu.usbserial-0001'
-Serial port /dev/cu.SLAB_USBtoUART
-Connecting........__
-Chip is ESP32D0WDQ6 (revision 1)
+Connecting........_____....._____....._____....._____...
+Chip is ESP32-D0WDQ6 (revision 1)
 Features: WiFi, BT, Dual Core, 240MHz, VRef calibration in efuse, Coding Scheme None
 Crystal is 40MHz
-MAC: b4:e6:2d:b3:ec:f1
+MAC: 7c:9e:bd:06:47:d8
 Uploading stub...
 Running stub...
 Stub running...
 Configuring flash size...
-Auto-detected Flash size: 4MB
-Compressed 1456544 bytes to 928552...
-Wrote 1456544 bytes (928552 compressed) at 0x00001000 in 82.2 seconds (effective 141.8 kbit/s)...
+Compressed 1448768 bytes to 926007...
+Wrote 1448768 bytes (926007 compressed) at 0x00001000 in 82.0 seconds (effective 141.3 kbit/s)...
 Hash of data verified.
 
 Leaving...
 Hard resetting via RTS pin...
-andrewgaitskell@Andrews-MacBook-Air MicroPython 
-
-
-https://docs.micropython.org/en/latest/esp8266/tutorial/index.html#esp8266-tutorial
 
 # Connect to ESP32 for REPL
 
-screen /dev/cu.SLAB_USBtoUART* 115200
+screen /dev/tty.usbserial-A50285BI* 115200
 
 # Enable WEBREPL do the following
 
