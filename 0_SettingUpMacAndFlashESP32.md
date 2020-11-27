@@ -66,9 +66,11 @@ Hash of data verified.
 Leaving...
 Hard resetting via RTS pin...
 
+# ESP32Cam needs to be in write mode during Flash only
+
 # Connect to ESP32 for REPL
 
-screen /dev/tty.usbserial-A50285BI* 115200
+screen /dev/tty.usbserial-A50285BI 115200
 
 # Enable WEBREPL do the following
 
