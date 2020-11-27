@@ -9,6 +9,7 @@ ls /dev/tty*
 I was using a 4 port hub and did not realise they gave different numbers to the same device
 
 /dev/tty.usbserial-14110
+
 /dev/tty.usbserial-14130
 
 # Erase Flash
