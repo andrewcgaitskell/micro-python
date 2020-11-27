@@ -38,35 +38,45 @@ esptool.py --port /dev/tty.usbserial-A50285BI erase_flash
 
 ## Write Flash
 
+Download firmware from:
+
 https://micropython.org/download/esp32/
 
-cp /Users/andrewgaitskell/Downloads/esp32-idf3-20200902-v1.13.bin /Users/andrewgaitskell/Documents/MicroPython/esp32cam
+Copy to working directory:
 
-cd /Users/andrewgaitskell/Documents/MicroPython/esp32cam
+    cp /Users/andrewgaitskell/Downloads/esp32-idf3-20200902-v1.13.bin /Users/andrewgaitskell/Documents/MicroPython/esp32cam
 
-esptool.py --chip esp32 --port /dev/tty.usbserial-A50285BI write_flash -z 0x1000 esp32-idf3-20200902-v1.13.bin
+Change to working directory:
+
+    cd /Users/andrewgaitskell/Documents/MicroPython/esp32cam
+
+Flash Firmware:
+
+    esptool.py --chip esp32 --port /dev/tty.usbserial-A50285BI write_flash -z 0x1000 esp32-idf3-20200902-v1.13.bin
 
 __needed to press reset button for it to start__
 
-Output:
+    Output:
 
-Connecting........_____....._____....._____....._____...
-Chip is ESP32-D0WDQ6 (revision 1)
-Features: WiFi, BT, Dual Core, 240MHz, VRef calibration in efuse, Coding Scheme None
-Crystal is 40MHz
-MAC: 7c:9e:bd:06:47:d8
-Uploading stub...
-Running stub...
-Stub running...
-Configuring flash size...
-Compressed 1448768 bytes to 926007...
-Wrote 1448768 bytes (926007 compressed) at 0x00001000 in 82.0 seconds (effective 141.3 kbit/s)...
-Hash of data verified.
+    Connecting........_____....._____....._____....._____...
+    Chip is ESP32-D0WDQ6 (revision 1)
+    Features: WiFi, BT, Dual Core, 240MHz, VRef calibration in efuse, Coding Scheme None
+    Crystal is 40MHz
+    MAC: 7c:9e:bd:06:47:d8
+    Uploading stub...
+    Running stub...
+    Stub running...
+    Configuring flash size...
+    Compressed 1448768 bytes to 926007...
+    Wrote 1448768 bytes (926007 compressed) at 0x00001000 in 82.0 seconds (effective 141.3 kbit/s)...
+    Hash of data verified.
 
-Leaving...
-Hard resetting via RTS pin...
+    Leaving...
+    Hard resetting via RTS pin...
 
 # ESP32Cam needs to be in write mode during Flash only
+
+Needed to remve jumper from pins
 
 # Connect to ESP32 for REPL
 
@@ -78,22 +88,51 @@ https://learn.adafruit.com/micropython-basics-esp8266-webrepl/access-webrepl
 
 at >>> paste
 
-import webrepl_setup
+    import webrepl_setup
+
+agree to enable, set password, reboot 
+
+upload a boot.py which included enabling repl and conection to Wifi
+
+Example boot file:
+
+    # This file is executed on every boot (including wake-boot from deepsleep)
+    #import esp
+    #esp.osdebug(None)
+    import uos, machine
+    #uos.dupterm(None, 1) # disable REPL on UART(0)
+    import gc
+    import webrepl
+    webrepl.start()
+    gc.collect()
 
 
+    def do_connect():
+        import network
+        wlan = network.WLAN(network.STA_IF)
+        wlan.active(True)
+        if not wlan.isconnected():
+            print('connecting to network...')
+            wlan.connect('ssid', 'password')
+            while not wlan.isconnected():
+                pass
+        print('network config:', wlan.ifconfig())
+    do_connect()
 
-
-Connect ESP8266 to WiFi
-
-import network
-wlan = network.WLAN(network.STA_IF)
-wlan.active(True)
-wlan.connect('ssid', 'password')
-
-Used when accessing via WEBREPL
-
-ws://192.168.4.1:8266/
 
 Found the following IP from my Router
 
-ws://192.168.1.36:8266/
+192.168.1.43
+
+Address for WebRepl as follows:
+
+ws://192.168.1.43:8266/
+
+
+Open up WebRepl webpage and enter the IP address of the ESPCam
+
+Enter password
+
+Should be offered:
+
+>>>
