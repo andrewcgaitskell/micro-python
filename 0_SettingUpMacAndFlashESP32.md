@@ -2,11 +2,12 @@
 
 1. Find USB Port
 2. Erase Flash Memory
-3. Download Relevant Micropython
+3. Download Relevant Micro Python Firmware
 4. Burn to Flash
-5. Connect to ESP32 Using Serial
+5. Connect to ESP32 Repl Using Serial
+6. Setup and Enable WebRepl
 6. Setup WiFi Connection
-7. Connect to ESP32 Using WiFi
+7. Connect to ESP32 using WebRepl
 
 # Burning Micro Python to ESP32
 
@@ -26,15 +27,21 @@ Normal ESP32 - Serial Port on Mac : /dev/tty.SLAB_USBtoUART
 
 ## Install esptool
 
-I have a Virtual Environment, to activate it: 
+Create a Python Virtual Environment
+
+I have an existing Virtual Environment, to activate it: 
 
 source /Users/andrewgaitskell/Code/PythonEnvs/env20201104/bin/activate
 
-pip install esptool
+Install esptool
+
+    pip install esptool
 
 ## Erase Flash
 
-esptool.py --port /dev/tty.usbserial-A50285BI erase_flash
+ESP32 needs to be empty
+
+    esptool.py --port /dev/tty.usbserial-A50285BI erase_flash
 
 ## Write Flash
 
@@ -76,15 +83,21 @@ __needed to press reset button for it to start__
 
 # ESP32Cam needs to be in write mode during Flash only
 
-Needed to remve jumper from pins
+Needed to remove jumper from pins
+
+Press reset
 
 # Connect to ESP32 for REPL
 
 screen /dev/tty.usbserial-A50285BI 115200
 
-# Enable WEBREPL do the following
+# Enable WEBREPL
+
+## Reference:
 
 https://learn.adafruit.com/micropython-basics-esp8266-webrepl/access-webrepl
+
+## Do following:
 
 at >>> paste
 
@@ -92,7 +105,7 @@ at >>> paste
 
 agree to enable, set password, reboot 
 
-upload a boot.py which included enabling repl and conection to Wifi
+upload a boot.py which included enabling webrepl and conection to Wifi
 
 Example boot file:
 
