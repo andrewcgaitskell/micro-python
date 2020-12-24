@@ -6,8 +6,9 @@
 4. Burn to Flash
 5. Connect to ESP32 Repl Using Serial
 6. Setup and Enable WebRepl
-6. Setup WiFi Connection
+6. Manually Setup WiFi Connection while connected via Serial Port
 7. Connect to ESP32 using WebRepl
+8. Upload boot.py file and reboot ESP32
 
 # Burning Micro Python to ESP32
 
@@ -105,6 +106,17 @@ at >>> paste
 
 agree to enable, set password, reboot 
 
+## manually connect ESP32 to WiFi
+
+    import network
+    wlan = network.WLAN(network.STA_IF)
+    wlan.active(True)
+    wlan.connect('ssid', 'password')
+
+## Connect to ESP32 via REPL
+
+## Upload boot.py file that contains WiFi credentials
+
 upload a boot.py which included enabling webrepl and conection to Wifi
 
 Example boot file:
@@ -134,6 +146,8 @@ Example boot file:
 
 
 Found the following IP from my Router
+
+Also can be found when manually connecting ESP32 to WiFi
 
 192.168.1.43
 
